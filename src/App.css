@@ -1,0 +1,22 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.lyrics {
+  display: inline-block;
+  gap: 2px;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.line {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

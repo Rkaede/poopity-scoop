@@ -1,0 +1,39 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
+
+  /* font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+button {
+  background-color: yellow;
+  border: 5px solid black;
+  color: black;
+  padding: 10px 20px;
+  font-size: 3em;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 900;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

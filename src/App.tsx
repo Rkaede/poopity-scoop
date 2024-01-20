@@ -6,84 +6,85 @@ import {
   animate,
 } from 'framer-motion';
 
-const highlightA = {
-  scale: [1, 1.1, 1],
-  backgroundColor: 'rgba(244,172,54,.4)',
-};
-const highlightB = {
-  scale: [1, 1.1, 1],
-  backgroundColor: 'rgba(104,222,122,.4)',
-};
-const highlightC = {
-  scale: [1, 1.1, 1],
-  backgroundColor: 'rgba(39,181,234,.4)',
+const highlights = {
+  A: { scale: [1, 1.3, 1], backgroundColor: '#F6F7C4' },
+  B: { scale: [1, 1.3, 1], backgroundColor: '#A1EEBD' },
+  C: { scale: [1, 1.3, 1], backgroundColor: '#7BD3EA' },
 };
 const highlightOptions = { type: 'spring' as const, duration: 0.2 };
 
-const timeline = [
-  ['#a1', highlightA, { at: 5.27, ...highlightOptions }],
-  ['#a2', highlightB, { at: 5.4, ...highlightOptions }],
-  ['#a3', highlightB, { at: 5.5, ...highlightOptions }],
-  ['#a4', highlightA, { at: 5.92, ...highlightOptions }],
+const rawTimelineData = [
+  ['#a1', 'A', 5.27],
+  ['#a2', 'B', 5.4],
+  ['#a3', 'B', 5.5],
+  ['#a4', 'A', 5.92],
   //
-  ['#b1', highlightA, { at: 7.08, ...highlightOptions }],
-  ['#b2', highlightC, { at: 7.22, ...highlightOptions }],
-  ['#b3', highlightB, { at: 7.3, ...highlightOptions }],
-  ['#b4', highlightA, { at: 7.7, ...highlightOptions }],
+  ['#b1', 'A', 7.08],
+  ['#b2', 'C', 7.22],
+  ['#b3', 'B', 7.3],
+  ['#b4', 'A', 7.7],
   //
-  ['#c1', highlightA, { at: 8.3, ...highlightOptions }],
-  ['#c2', highlightB, { at: 8.76, ...highlightOptions }],
-  ['#c3', highlightA, { at: 8.9, ...highlightOptions }],
-  ['#c4', highlightB, { at: 9.35, ...highlightOptions }],
-  ['#c5', highlightA, { at: 9.5, ...highlightOptions }],
+  ['#c1', 'A', 8.3],
+  ['#c2', 'B', 8.76],
+  ['#c3', 'A', 8.9],
+  ['#c4', 'B', 9.35],
+  ['#c5', 'A', 9.5],
   //
-  ['#d1', highlightA, { at: 10.18, ...highlightOptions }],
-  ['#d2', highlightB, { at: 10.4, ...highlightOptions }],
-  ['#d3', highlightA, { at: 10.79, ...highlightOptions }],
-  ['#d4', highlightB, { at: 10.9, ...highlightOptions }],
+  ['#d1', 'A', 10.18],
+  ['#d2', 'B', 10.4],
+  ['#d3', 'A', 10.79],
+  ['#d4', 'B', 10.9],
   //
-  ['#e1', highlightA, { at: 11.7, ...highlightOptions }],
-  ['#e2', highlightB, { at: 11.8, ...highlightOptions }],
-  ['#e3', highlightA, { at: 12.0, ...highlightOptions }],
+  ['#e1', 'A', 11.7],
+  ['#e2', 'B', 11.8],
+  ['#e3', 'A', 12.0],
   //
-  ['#f1', highlightA, { at: 13.0, ...highlightOptions }],
-  ['#f2', highlightC, { at: 13.3, ...highlightOptions }],
-  ['#f3', highlightB, { at: 13.4, ...highlightOptions }],
-  ['#f4', highlightA, { at: 13.6, ...highlightOptions }],
-  ['#f5', highlightA, { at: 13.9, ...highlightOptions }],
-  ['#f6', highlightA, { at: 14.3, ...highlightOptions }],
+  ['#f1', 'A', 13.0],
+  ['#f2', 'C', 13.3],
+  ['#f3', 'B', 13.4],
+  ['#f4', 'A', 13.6],
+  ['#f5', 'A', 13.9],
+  ['#f6', 'A', 14.5],
+  //
+  ['#g1', 'A', 15.0],
+  ['#g2', 'C', 15.3],
+  ['#g3', 'B', 15.4],
+  ['#g4', 'A', 15.6],
+  ['#g5', 'A', 15.9],
+  //
+  ['#h1', 'A', 16.8],
+  ['#h2', 'A', 18.1],
+  //
+  ['#i1', 'A', 19.1],
+  ['#i2', 'C', 19.4],
+  ['#i3', 'B', 19.6],
+  ['#i4', 'A', 19.8],
+  //
+  ['#j-1', 'A', 21.0],
+  ['#j-2', 'C', 21.2],
+  ['#j-3', 'B', 21.3],
+  ['#j-4', 'A', 21.6],
+  //
+  ['#k1', 'A', 22.8],
+  ['#k2', 'C', 23.0],
+  ['#k3', 'B', 23.1],
+  ['#k4', 'A', 23.4],
+  ['#k5', 'A', 23.7],
+];
 
-  ['#g1', highlightA, { at: 15.0, ...highlightOptions }],
-  ['#g2', highlightC, { at: 15.3, ...highlightOptions }],
-  ['#g3', highlightB, { at: 15.4, ...highlightOptions }],
-  ['#g4', highlightA, { at: 15.6, ...highlightOptions }],
-  ['#g5', highlightA, { at: 15.9, ...highlightOptions }],
-  //
-  ['#h1', highlightA, { at: 16.8, ...highlightOptions }],
-  ['#h2', highlightA, { at: 18.1, ...highlightOptions }],
-  //
-  ['#i1', highlightA, { at: 19.1, ...highlightOptions }],
-  ['#i2', highlightC, { at: 19.4, ...highlightOptions }],
-  ['#i3', highlightB, { at: 19.6, ...highlightOptions }],
-  ['#i4', highlightA, { at: 19.8, ...highlightOptions }],
-
-  ['#j-1', highlightA, { at: 21.0, ...highlightOptions }],
-  ['#j-2', highlightC, { at: 21.2, ...highlightOptions }],
-  ['#j-3', highlightB, { at: 21.3, ...highlightOptions }],
-  ['#j-4', highlightA, { at: 21.6, ...highlightOptions }],
-
-  //
-  ['#k1', highlightA, { at: 22.8, ...highlightOptions }],
-  ['#k2', highlightC, { at: 23.0, ...highlightOptions }],
-  ['#k3', highlightB, { at: 23.1, ...highlightOptions }],
-  ['#k4', highlightA, { at: 23.4, ...highlightOptions }],
-  ['#k5', highlightA, { at: 23.7, ...highlightOptions }],
-] as AnimationSequence;
+const timeline = rawTimelineData.map(([selector, highlightKey, time]) => {
+  return [
+    selector,
+    highlights[highlightKey as keyof typeof highlights],
+    { at: time, ...highlightOptions },
+  ];
+}) as AnimationSequence;
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const animateRef = useRef<AnimationPlaybackControls | null>(null);
+  const [time, setTime] = useState(0);
 
   useLayoutEffect(() => {
     animateRef.current = animate(timeline);
@@ -105,6 +106,11 @@ function App() {
   function handleTick() {
     if (!animateRef.current) return;
     animateRef.current.time = audioRef.current?.currentTime || 0;
+    setTime(audioRef.current?.currentTime || 0);
+  }
+
+  function handleEnd() {
+    setIsPlaying(false);
   }
 
   useEffect(() => {
@@ -115,10 +121,34 @@ function App() {
     }
   }, [isPlaying]);
 
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const time = Number(event.target.value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = time;
+      setTime(time);
+    }
+  };
+
   return (
     <div className="main">
       <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
-      <audio ref={audioRef} src="/poopity.opus" onTimeUpdate={handleTick} />
+      <input
+        type="range"
+        min="0"
+        max={audioRef.current?.duration || 0}
+        step="0.01"
+        value={time}
+        onChange={handleSliderChange}
+      />
+      <span className="time">
+        {new Date(time * 1000).toISOString().substring(14, 19)}
+      </span>
+      <audio
+        ref={audioRef}
+        src="/poopity.mp3"
+        onTimeUpdate={handleTick}
+        onEnded={handleEnd}
+      />
 
       <div className="lyrics">
         <div className="line">
